@@ -1,0 +1,61 @@
+/* Reset some default styles */
+body, h1, h2, h3, p, ul, li {
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: 'Arial', sans-serif;
+}
+
+/* Header Styles */
+header {
+    background-color: #C8102E; /* UH Red */
+    color: #ffffff; /* White text */
+    padding: 10px;
+    text-align: center;
+}
+
+.logo img {
+    max-width: 12%; /* Adjusted logo size */
+    height: auto;
+}
+
+/* Navigation Styles */
+nav {
+    background-color: #C8102E; /* UH Red */
+}
+
+ul {
+    list-style-type: none;
+    display: flex;
+    justify-content: center;
+    padding: 15px 0; /* Increased padding for more space */
+}
+
+li {
+    margin: 0 30px; /* Increased margin for more space */
+}
+
+a {
+    text-decoration: none;
+    color: #ffffff; /* White text */
+    font-weight: bold;
+    font-size: 16px; /* Increased font size */
+}
+
+/* Style for the underline on the selected page */
+li.selected a {
+    border-bottom: 2px solid #ffffff; /* Thicker underline, adjust as needed */
+}
+
+/* Footer Styles */
+footer {
+    background-color: #C8102E; /* UH Red */
+    color: #ffffff; /* White text */
+    text-align: center;
+    padding: 10px;
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+}

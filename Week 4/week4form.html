@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html>
+
+<title>Week 4 First HTML Form</title>
+
+<head>
+    <style>
+        body {background-color:azure}
+        #d01  {background-color:lightgreen}
+        #d02 {background-color: rgb(204, 255, 121);}
+        #d03 {background-color:aquamarine}
+
+        button
+        {
+            background-color: rgb(12, 56, 92);
+            width: 200px;
+            height: 50px;
+            color:white
+        }
+    </style>
+</head>
+<body>
+    <hr>
+    <h1 align="center">This is my first HTML Form Design</h1>
+    <hr>
+    <br><br>
+    <form>
+        <div id="d01">
+            <fieldset>
+                <legend>Personal Information</legend>
+                First Name: <input type="text" placeholder="Enter the first name here" id="fname"> <br><br>
+                Last Name: <input type="text" placeholder="Enter the last name here" id="lname"> <br><br>
+                Email: <input type="text" placeholder="Enter the email here" id="email"> <br><br>
+                Home Address: <input type="text" placeholder="Enter the address here" id="address"> <br><br>
+            </fieldset>
+        </div>
+        <div id="d02">
+            <fieldset>
+                <legend>Education</legend>
+                High School: <input type="text" placeholder="Enter the high school here" id="highschool"> <br><br>
+                College: <input type="text" placeholder="Enter the college here" id="college"> <br><br>
+                Degree: <input type="text" placeholder="Enter the degree here" id="degree"> <br><br>
+
+            </fieldset>
+            </div>
+        </div>
+        <div id ="d03">
+            <fieldset>
+                <legend>Current Courses</legend>
+                <input type ="checkbox" id="c01"> Web Development <br><br>
+                <input type ="checkbox" id="c02"> Application Development <br><br>
+                <input type ="checkbox" id="c03"> Managerial Accounting <br><br>
+                <input type ="checkbox" id="c04"> Elementary Statistics <br><br>
+                <input type ="checkbox" id="c05"> UX Design and Development <br><br>
+                Are you a CIS major student?
+                <input type="radio" name="r01"> Yes
+                <input type="radio" name="r01"> No
+                <br><br>
+                Today's Date: <input type="date" id="tdate"> <br><br>
+                <!-- add drop down list -->
+                Please select the country:
+                <select id="location">
+                    <option value=""></option>
+                    <option value="Houston">Houston</option>
+                    <option value="Houston">Conroe</option>
+                    <option value="Houston">The Woodlands</option>
+                    <option value="Houston">Sugarland</option>
+
+                </select>
+            </fieldset>
+            <br><br>
+            <button>Button 01</button>
+            <button>Button 02</button>
+            <br><br>
+            
+        </div>
+    </form>
+</body>
+
+
+</html>
