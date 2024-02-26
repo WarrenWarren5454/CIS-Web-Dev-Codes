@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Simple FPS Simulator with AI</title>
+    <style>
+        body {
+            margin: 0;
+            overflow: hidden;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: #f0f0f0;
+        }
+        canvas {
+            border: 1px solid #ccc;
+        }
+    </style>
+</head>
+<body>
+    <canvas id="fpsCanvas" width="800" height="600"></canvas>
+
+    <script>
+        const canvas = document.getElementById("fpsCanvas");
+        const ctx = canvas.getContext("2d");
+
+        const player = {
+            x: canvas.width / 2,
+            y: canvas.height / 2,
+            size: 20,
+            speed: 5,
+            lastShotTime: 0
+        };
+
+        const bullets = [];
+        const bulletSpeed = 8;
+        const playerCooldown = 5000; // 5 seconds cooldown
+
+        const aiOpponent = {
+            x: Math.random() * canvas.width,
+            y: Math.random() * canvas.height,
+            size: 20,
+            speed: 2,
+            lastShotTime: 0
+        };
+
+        const aiCooldown = 5000; // 5 seconds cooldown
+
+        function drawPlayer() {
+            ctx.fillStyle = "#00F";
+            ctx.fillRect(player.x - player.size / 2, player.y - player.size / 2, player.size, player.size);
+        }
+
+        function drawBullets() {
+            ctx.fillStyle = "#F00";
+            bullets.forEach(bullet => {
+                ctx.fillRect(bullet.x, bullet.y - 2, 5, 5);
+            });
+        }
+
+        function drawAIOpponent() {
+            ctx.fillStyle = "#F00";
+            ctx.fillRect(aiOpponent.x - aiOpponent.size / 2, aiOpponent.y - aiOpponent.size / 2, aiOpponent.size, aiOpponent.size);
+        }
+
+        function update() {
+            if (keys["ArrowUp"]) player.y -= player.speed;
+            if (keys["ArrowDown"]) player.y += player.speed;
+            if (keys["ArrowLeft"]) player.x -= player.speed;
+            if (keys["ArrowRight"]) player.x += player.speed;
+
+            // Ensure the player stays within the canvas bounds
+            player.x = Math.max(player.size / 2, Math.min(canvas.width - player.size / 2, player.x));
+            player.y = Math.max(player.size / 2, Math.min(canvas.height - player.size / 2, player.y));
+
+            // Update bullets
+            bullets.forEach(bullet => {
+                bullet.x += bulletSpeed;
+            });
+
+            // Remove bullets that are out of the canvas
+            bullets.filter(bullet => bullet.x < canvas.width);
+
+            // Check for collisions with the canvas bounds
+            bullets.forEach(bullet => {
+                if (
+                    bullet.x > player.x - player.size / 2 &&
+                    bullet.x < player.x + player.size / 2 &&
+                    bullet.y > player.y - player.size / 2 &&
+                    bullet.y < player.y + player.size / 2
+                ) {
+                    alert("Game Over!");
+                    resetGame();
+                }
+            });
+
+            // Update AI opponent
+            const currentTime = new Date().getTime();
+
+            // Simple AI: Move towards the player's position
+            const angle = Math.atan2(player.y - aiOpponent.y, player.x - aiOpponent.x);
+            aiOpponent.x += aiOpponent.speed * Math.cos(angle);
+            aiOpponent.y += aiOpponent.speed * Math.sin(angle);
+
+            // Periodically shoot bullets with cooldown
+            if (currentTime - aiOpponent.lastShotTime > aiCooldown) {
+                bullets.push({ x: aiOpponent.x + aiOpponent.size / 2, y: aiOpponent.y });
+                aiOpponent.lastShotTime = currentTime;
+            }
+
+            // Player shooting with cooldown
+            if (keys[" "] && currentTime - player.lastShotTime > playerCooldown) {
+                bullets.push({ x: player.x + player.size / 2, y: player.y });
+                player.lastShotTime = currentTime;
+            }
+        }
+
+        function draw() {
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+            drawPlayer();
+            drawBullets();
+            drawAIOpponent();
+        }
+
+        function resetGame() {
+            player.x = canvas.width / 2;
+            player.y = canvas.height / 2;
+            bullets.length = 0;
+            player.lastShotTime = 0;
+
+            // Reset AI opponent position and cooldown
+            aiOpponent.x = Math.random() * canvas.width;
+            aiOpponent.y = Math.random() * canvas.height;
+            aiOpponent.lastShotTime = 0;
+        }
+
+        const keys = {};
+
+        document.addEventListener("keydown", (event) => {
+            keys[event.key] = true;
+        });
+
+        document.addEventListener("keyup", (event) => {
+            keys[event.key] = false;
+        });
+
+        function gameLoop() {
+            update();
+            draw();
+            requestAnimationFrame(gameLoop);
+        }
+
+        resetGame();
+        gameLoop();
+    </script>
+</body>
+</html>

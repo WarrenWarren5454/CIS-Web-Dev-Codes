@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+
+<html>
+
+<title>Week 06 Codes</title>
+
+<head>
+<style>
+body{
+
+    background-color: azure;
+}
+
+
+
+</style>
+</head>
+<body>
+
+
+    <h1>Week 06 Code 01: Comparison Operator</h1>
+    <p id = "p01"></p>
+    <p id = "p02"></p>
+    <p id = "p03"></p>
+    <script>
+        let a = 5, b = 10, c = "5";
+        document.write("The value of a = "+a);
+        document.write("<br>The value of b = "+b);
+        document.write("<br>The value of c = "+c);
+        /* Show the result at p01*/
+        document.getElementById("p01").innerHTML = (a==c);
+        document.getElementById("p02").innerHTML = (a===c);
+        document.getElementById("p03").innerHTML = (a<b);
+    </script>
+
+</body>
+
+</html>
+<!--Code 02-->
+<html>
+
+<head>
+
+</head>
+<body>
+    <h1>Week 06 Code 02: Conditional Statement</h1>
+    <script>
+        let x = 15
+        //Check the value by using if-else
+        if(x < 18){
+            document.write("Good Afternoon");
+
+        }
+        else{
+            document.write("Good Evening");
+        }
+
+    </script>
+</body>
+
+
+</html>
+<!--Code 03-->
+<html>
+
+<head>
+
+</head>
+<body>
+    <h1>Week 06 Code 03: JavaScript Arrays</h1>
+    
+</body>
+<script>
+    let ArrayName = ["Warren", "Jerry" , "Ryan"];
+    document.write("This is my Array List Item = "+ ArrayName + "<br>");
+    
+    //choosing a value via index for array
+    document.write(ArrayName[2]);
+    ArrayName.push("Julie");
+    ArrayName.push("Aaron");
+    ArrayName.push("John");
+    //using push method for array
+    document.write("<br>Add new element in my array = "+ArrayName);
+
+    //using shift method
+    ArrayName.shift();
+    document.write("<br>Remove first item of the array = "+ArrayName);
+
+    ArrayName.splice(1,1);
+    document.write("<br>Remove the middle item of the array = "+ArrayName);
+
+</script>
+
+</html>
+<!--Code 04-->
+<html>
+
+<head>
+    <style>
+    #b01{
+
+        background-image:url("Images/plus.jpg");
+        background-size:cover;
+        width:50px;
+        height:50px;
+
+    }
+    #b02{
+
+        background-image:url("Images/minus.png");
+        background-size:cover;
+        width:50px;
+        height:50px;
+
+    }
+    #b03{
+
+        background-image:url("Images/multiply.png");
+        background-size:cover;
+        width:50px;
+        height:50px;
+
+    }
+    #b04{
+
+        background-image:url("Images/divide.png");
+        background-size:cover;
+        width:50px;
+        height:50px;
+
+    }
+
+
+    </style>
+</head>
+<body>
+    
+
+
+    <h1>Week 06 Code 04: JavaScript Function</h1>
+
+    Number 1: <input type = "text" id = "num1"> <br><br>
+    Number 2: <input type = "text" id = "num2"> <br><br>
+    <input type = "button" id = "b01" onclick="addby()">
+    <input type = "button" id = "b02" onclick="minus()">
+    <input type = "button" id = "b03" onclick="multiply()">
+    <input type = "button" id = "b04" onclick="divide()">
+    <p>The result is: <span id="result"></span> </p>
+
+
+</body>
+<script>
+    
+    
+
+    function addby(){
+        let n1 = document.getElementById("num1").value;
+        let n2 = document.getElementById("num2").value;
+
+        
+        //the addition sign is in front of each variable to specify that it is addition, or else it will concantenate
+        document.getElementById("result").innerHTML = (+n1)+(+n2);
+    }
+
+    function minus(){
+        let n1 = document.getElementById("num1").value;
+        let n2 = document.getElementById("num2").value;
+
+        
+        //the addition sign is in front of each variable to specify that it is addition, or else it will concantenate
+        document.getElementById("result").innerHTML = (n1)-(n2);
+    }
+
+    function multiply(){
+        let n1 = document.getElementById("num1").value;
+        let n2 = document.getElementById("num2").value;
+
+        
+        //the addition sign is in front of each variable to specify that it is addition, or else it will concantenate
+        document.getElementById("result").innerHTML = (n1)*(n2);
+    }
+
+    function divide(){
+        let n1 = document.getElementById("num1").value;
+        let n2 = document.getElementById("num2").value;
+
+        
+        //the addition sign is in front of each variable to specify that it is addition, or else it will concantenate
+        document.getElementById("result").innerHTML = (n1/n2);
+    }
+
+    
+</script>
+
+
+</html>
+<!--Code 05-->
+<html>
+
+<head>
+
+</head>
+
+    <h1>Week 06 Code 05: JavaScript Object</h1>
+    <p id="demo1"></p>
+    <p id="demo2"></p>
+    <script>
+        let student = {
+            fname: "Warren",
+            lname: "Closson"
+        }
+        //first method
+        document.getElementById("demo1").innerHTML = "First Method: "+student.fname+" "+student.lname;
+        //second method
+        document.getElementById("demo2").innerHTML = "Second Method: "+student["fname"]+" "+student["lname"]
+    </script>
+
+
+</html>
+<!--Code 06-->
+<html>
+
+<head>
+
+</head>
+    <body>
+        <h1>Week 06 Code 06: Function with parameters</h1>
+    </body>
+    <p id = "demo3"></p>
+    <script>
+        function myFunction(x,y){
+
+            return x + y
+        }
+        document.getElementById("demo3").innerHTML = myFunction(2,3)
+
+    </script>
+    
+
+
+</html>
